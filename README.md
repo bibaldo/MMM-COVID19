@@ -3,7 +3,7 @@ A [MagicMirror²](https://magicmirror.builders) helper module to track reported 
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://raw.githubusercontent.com/bibaldo/MMM-COVID19/master/LICENSE)
 
-![Example Scheduling](.github/example.gif)
+![Example](.github/example.png)
 
 ## Installation
 
