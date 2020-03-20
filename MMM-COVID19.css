@@ -1,0 +1,23 @@
+.covid .small {
+  font-size: 14px;
+}
+
+.covid .medium {
+  font-size: 20px;
+}
+
+.covid td.number {
+  text-align: right
+}
+
+.covid td.recovered {
+  color: green
+}
+
+.covid td.deaths {
+  color: red
+}
+
+.covid td.active {
+  color: orange
+}
