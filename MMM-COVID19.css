@@ -1,3 +1,7 @@
+.covid {
+  border-collapse: collapse!important;
+}
+
 .covid .small {
   font-size: 14px;
 }
@@ -7,17 +11,20 @@
 }
 
 .covid td.number {
-  text-align: right
+  text-align: right;
 }
 
 .covid td.recovered {
-  color: green
+  color: green;
 }
 
 .covid td.deaths {
-  color: red
+  color: red;
 }
 
 .covid td.active {
-  color: orange
+  color: orange;
+}
+.covid tr.world {
+  border-bottom: 3px double grey;
 }

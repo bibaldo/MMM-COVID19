@@ -8,10 +8,12 @@
  */
 
 Module.register("MMM-COVID19", {
-  result: {},
+  countriesStats: {},
+  globalStats: { "total_cases": "", "total_deaths": "", "total_recovered": "" }, // beautify things at start
   defaults: {
     header: 'COVID-19',    
     countries: [ "Argentina", "Italy", "Spain", "Germany" ], // default list
+    worldStats: false,
     rapidapiKey : "", // X-RapidAPI-Key provided at https://rapidapi.com/astsiatsko/api/coronavirus-monitor
     headerRowClass: "small", // small, medium or big
     updateInterval: 300000, // update interval in milliseconds
@@ -39,13 +41,21 @@ Module.register("MMM-COVID19", {
   },
 
   getInfo: function () {
-    this.sendSocketNotification('GET_INFO', this.config.rapidapiKey)
+    this.sendSocketNotification('GET_BY_COUNTRY_STATS', this.config.rapidapiKey)
+
+    if (this.config.worldStats) {
+      this.sendSocketNotification('GET_GLOBAL_STATS', this.config.rapidapiKey)
+    }
   },
 
   socketNotificationReceived: function(notification, payload) {
-    if (notification === "INFO_RESULT") {
-      var self = this
-      this.result = payload
+    var self = this
+    if (notification === "BYCOUNTRY_RESULT") {
+      this.countriesStats = payload
+      this.updateDom(self.config.fadeSpeed)
+    }
+    if (notification === "GLOBAL_RESULT") {
+      this.globalStats = payload
       this.updateDom(self.config.fadeSpeed)
     }
   },
@@ -56,8 +66,9 @@ Module.register("MMM-COVID19", {
 
   getDom: function() {
     var countriesList = this.config.countries
-    var data = this.result["countries_stat"]    
-
+    var countriesStats = this.countriesStats["countries_stat"]
+    var globalStats = this.globalStats
+    
     var wrapper = document.createElement("table")
     wrapper.className = this.config.tableClass || 'covid'
 
@@ -86,9 +97,41 @@ Module.register("MMM-COVID19", {
     headerRow.appendChild(headeractiveCell)
 
     wrapper.appendChild(headerRow)
+    // WorldWide row, activate it via config
+    if (this.config.worldStats) {
+      let worldRow = document.createElement("tr"),
+          worldNameCell = document.createElement("td"),
+          confirmedCell = document.createElement("td"),
+          deathsCell = document.createElement("td"),
+          recoveredCell = document.createElement("td"),
+          activeCell = document.createElement("td"),
+          cases = globalStats["total_cases"],
+          deaths = globalStats["total_deaths"],
+          totalRecovered = globalStats["total_recovered"],
+          activeCases = '';
 
-    for (let key in data) {
-      let value = data[key]
+      worldNameCell.innerHTML = 'Worldwide'
+      worldRow.className = 'world'
+      confirmedCell.className = 'number confirmed'
+      confirmedCell.innerHTML = cases
+      deathsCell.className = 'number deaths'
+      deathsCell.innerHTML = deaths
+      recoveredCell.className = 'number recovered'
+      recoveredCell.innerHTML = totalRecovered
+      activeCell.className = 'number active'
+      activeCell.innerHTML = activeCases
+
+      worldRow.appendChild(worldNameCell)
+      worldRow.appendChild(confirmedCell)
+      worldRow.appendChild(deathsCell)
+      worldRow.appendChild(recoveredCell)
+      worldRow.appendChild(activeCell)
+      
+      wrapper.appendChild(worldRow)
+    }
+    // countries row, one per country listed at config => countries
+    for (let key in countriesStats) {
+      let value = countriesStats[key]
       if (countriesList.indexOf(value["country_name"]) != -1) {
         let countryRow = document.createElement("tr"),
             countryNameCell = document.createElement("td"),
