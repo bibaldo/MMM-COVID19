@@ -14,6 +14,7 @@ Module.register("MMM-COVID19", {
     header: 'COVID-19',    
     countries: [ "Argentina", "Italy", "Spain", "Germany" ], // default list
     orderCountriesByName: false,
+    lastUpdateInfo: false,
     worldStats: false,
     rapidapiKey : "", // X-RapidAPI-Key provided at https://rapidapi.com/astsiatsko/api/coronavirus-monitor
     headerRowClass: "small", // small, medium or big
@@ -168,7 +169,19 @@ Module.register("MMM-COVID19", {
         
         wrapper.appendChild(countryRow)
       }
-    }    
+    }
+    if (this.config.lastUpdateInfo) {
+      let statsDateRow = document.createElement("tr"),
+          statsDateCell = document.createElement("td");
+
+      statsDateCell.innerHTML = 'statistic taken at ' + this.countriesStats['statistic_taken_at'] + ' (UTC)'
+      statsDateCell.colSpan = "5";
+      statsDateCell.className = 'last-update'
+
+      statsDateRow.appendChild(statsDateCell)
+      wrapper.appendChild(statsDateRow)
+    }
+
 		return wrapper
   },
   // sort according to some key and the order could be 'asc' or 'desc'
