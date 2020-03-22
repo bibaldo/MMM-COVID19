@@ -13,6 +13,7 @@ Module.register("MMM-COVID19", {
   defaults: {
     header: 'COVID-19',    
     countries: [ "Argentina", "Italy", "Spain", "Germany" ], // default list
+    orderCountriesByName: false,
     worldStats: false,
     rapidapiKey : "", // X-RapidAPI-Key provided at https://rapidapi.com/astsiatsko/api/coronavirus-monitor
     headerRowClass: "small", // small, medium or big
@@ -69,6 +70,7 @@ Module.register("MMM-COVID19", {
     var countriesList = this.config.countries
     var countriesStats = this.countriesStats["countries_stat"]
     var globalStats = this.globalStats
+    if (this.config.orderCountriesByName && countriesStats) countriesStats.sort(this.compareValues('country_name'))
     
     var wrapper = document.createElement("table")
     wrapper.className = this.config.tableClass || 'covid'
@@ -169,5 +171,29 @@ Module.register("MMM-COVID19", {
     }    
 		return wrapper
   },
+  // sort according to some key and the order could be 'asc' or 'desc'
+  compareValues: function(key, order = 'asc') {
+    return function innerSort(a, b) {
+      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+        // property doesn't exist on either object
+        return 0
+      }
+  
+      const varA = (typeof a[key] === 'string')
+        ? a[key].toUpperCase() : a[key]
+      const varB = (typeof b[key] === 'string')
+        ? b[key].toUpperCase() : b[key]
+  
+      let comparison = 0
+      if (varA > varB) {
+        comparison = 1
+      } else if (varA < varB) {
+        comparison = -1
+      }
+      return (
+        (order === 'desc') ? (comparison * -1) : comparison
+      );
+    }
+  },  
 
 })
