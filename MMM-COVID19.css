@@ -28,3 +28,8 @@
 .covid tr.world {
   border-bottom: 3px double grey;
 }
+
+.covid td.last-update {
+  text-align: right;
+  font-size: 11px;
+}
