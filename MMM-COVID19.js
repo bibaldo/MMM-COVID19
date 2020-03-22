@@ -16,6 +16,7 @@ Module.register("MMM-COVID19", {
     worldStats: false,
     rapidapiKey : "", // X-RapidAPI-Key provided at https://rapidapi.com/astsiatsko/api/coronavirus-monitor
     headerRowClass: "small", // small, medium or big
+    infoRowClass: "big", // small, medium or big
     updateInterval: 300000, // update interval in milliseconds
     fadeSpeed: 4000
   },
@@ -111,14 +112,15 @@ Module.register("MMM-COVID19", {
           activeCases = '';
 
       worldNameCell.innerHTML = 'Worldwide'
-      worldRow.className = 'world'
-      confirmedCell.className = 'number confirmed'
+      worldNameCell.className = this.config.infoRowClass
+      worldRow.className = 'world ' + this.config.infoRowClass
+      confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
       confirmedCell.innerHTML = cases
-      deathsCell.className = 'number deaths'
+      deathsCell.className = 'number deaths ' + this.config.infoRowClass
       deathsCell.innerHTML = deaths
-      recoveredCell.className = 'number recovered'
+      recoveredCell.className = 'number recovered ' + this.config.infoRowClass
       recoveredCell.innerHTML = totalRecovered
-      activeCell.className = 'number active'
+      activeCell.className = 'number active ' + this.config.infoRowClass
       activeCell.innerHTML = activeCases
 
       worldRow.appendChild(worldNameCell)
@@ -146,13 +148,14 @@ Module.register("MMM-COVID19", {
             activeCases = value["active_cases"];
 
         countryNameCell.innerHTML = countryName
-        confirmedCell.className = 'number confirmed'
+        countryNameCell.className = this.config.infoRowClass
+        confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
         confirmedCell.innerHTML = cases
-        deathsCell.className = 'number deaths'
+        deathsCell.className = 'number deaths ' + this.config.infoRowClass
         deathsCell.innerHTML = deaths
-        recoveredCell.className = 'number recovered'
+        recoveredCell.className = 'number recovered ' + this.config.infoRowClass
         recoveredCell.innerHTML = totalRecovered
-        activeCell.className = 'number active'
+        activeCell.className = 'number active ' + this.config.infoRowClass
         activeCell.innerHTML = activeCases
 
         countryRow.appendChild(countryNameCell)
