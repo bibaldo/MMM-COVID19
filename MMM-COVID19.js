@@ -16,6 +16,7 @@ Module.register("MMM-COVID19", {
     orderCountriesByName: false,
     lastUpdateInfo: false,
     worldStats: false,
+    delta: false,
     rapidapiKey : "", // X-RapidAPI-Key provided at https://rapidapi.com/astsiatsko/api/coronavirus-monitor
     headerRowClass: "small", // small, medium or big
     infoRowClass: "big", // small, medium or big
@@ -79,16 +80,22 @@ Module.register("MMM-COVID19", {
     // header row
     var headerRow = document.createElement("tr"),
         headerconfirmedCell = document.createElement("td"),
+        headerNewConfirmedCell = document.createElement("td"),
         headerCountryNameCell = document.createElement("td"),
         headerrecoveredCell = document.createElement("td"),
         headerdeathsCell = document.createElement("td"),
+        headerNewDeathsCell = document.createElement("td"),
         headeractiveCell = document.createElement("td")
 
     headerCountryNameCell.innerHTML = ''
     headerconfirmedCell.className = 'number confirmed ' + this.config.headerRowClass
     headerconfirmedCell.innerHTML = 'Confirmed'
+    headerNewConfirmedCell.className = 'number confirmed ' + this.config.headerRowClass
+    headerNewConfirmedCell.innerHTML = 'New Cases'
     headerdeathsCell.className = 'number deaths ' + this.config.headerRowClass
     headerdeathsCell.innerHTML = 'Deaths'
+    headerNewDeathsCell.className = 'number deaths ' + this.config.headerRowClass
+    headerNewDeathsCell.innerHTML = 'New Deaths'
     headerrecoveredCell.className = 'number recovered ' + this.config.headerRowClass
     headerrecoveredCell.innerHTML = 'Recovered'
     headeractiveCell.className = 'number active ' + this.config.headerRowClass
@@ -96,7 +103,13 @@ Module.register("MMM-COVID19", {
 
     headerRow.appendChild(headerCountryNameCell)
     headerRow.appendChild(headerconfirmedCell)
+    if (this.config.delta) {
+      headerRow.appendChild(headerNewConfirmedCell)
+    }
     headerRow.appendChild(headerdeathsCell)
+    if (this.config.delta) {
+      headerRow.appendChild(headerNewDeathsCell)
+    }
     headerRow.appendChild(headerrecoveredCell)
     headerRow.appendChild(headeractiveCell)
 
@@ -106,11 +119,15 @@ Module.register("MMM-COVID19", {
       let worldRow = document.createElement("tr"),
           worldNameCell = document.createElement("td"),
           confirmedCell = document.createElement("td"),
+          newCasesCell = document.createElement("td"),
           deathsCell = document.createElement("td"),
+          newDeathsCell = document.createElement("td"),
           recoveredCell = document.createElement("td"),
           activeCell = document.createElement("td"),
           cases = globalStats["total_cases"],
+          newCases = globalStats["new_cases"],
           deaths = globalStats["total_deaths"],
+          newDeaths = globalStats["new_deaths"],
           totalRecovered = globalStats["total_recovered"],
           activeCases = '';
 
@@ -119,8 +136,16 @@ Module.register("MMM-COVID19", {
       worldRow.className = 'world ' + this.config.infoRowClass
       confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
       confirmedCell.innerHTML = cases
+      newCasesCell.className = 'number confirmed ' + this.config.infoRowClass
+      if (newCases) {
+        newCasesCell.innerHTML = newCases
+      }
       deathsCell.className = 'number deaths ' + this.config.infoRowClass
       deathsCell.innerHTML = deaths
+      newDeathsCell.className = 'number deaths ' + this.config.infoRowClass
+      if (newDeaths) {
+        newDeathsCell.innerHTML = newDeaths
+      }
       recoveredCell.className = 'number recovered ' + this.config.infoRowClass
       recoveredCell.innerHTML = totalRecovered
       activeCell.className = 'number active ' + this.config.infoRowClass
@@ -128,7 +153,13 @@ Module.register("MMM-COVID19", {
 
       worldRow.appendChild(worldNameCell)
       worldRow.appendChild(confirmedCell)
+      if (this.config.delta) {
+        worldRow.appendChild(newCasesCell)
+      }
       worldRow.appendChild(deathsCell)
+      if (this.config.delta) {
+        worldRow.appendChild(newDeathsCell)
+      }
       worldRow.appendChild(recoveredCell)
       worldRow.appendChild(activeCell)
       
@@ -141,12 +172,16 @@ Module.register("MMM-COVID19", {
         let countryRow = document.createElement("tr"),
             countryNameCell = document.createElement("td"),
             confirmedCell = document.createElement("td"),
+            newCasesCell = document.createElement("td"),
             deathsCell = document.createElement("td"),
+            newDeathsCell = document.createElement("td"),
             recoveredCell = document.createElement("td"),
             activeCell = document.createElement("td"),
             countryName = value["country_name"],
             cases = value["cases"],
             deaths = value["deaths"],
+            newCases = value["new_cases"],
+            newDeaths = value["new_deaths"],
             totalRecovered = value["total_recovered"],
             activeCases = value["active_cases"];
 
@@ -154,8 +189,16 @@ Module.register("MMM-COVID19", {
         countryNameCell.className = this.config.infoRowClass
         confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
         confirmedCell.innerHTML = cases
+        newCasesCell.className = 'number confirmed ' + this.config.infoRowClass
+        if (newCases) {
+          newCasesCell.innerHTML = '+' + newCases
+        }
         deathsCell.className = 'number deaths ' + this.config.infoRowClass
         deathsCell.innerHTML = deaths
+        newDeathsCell.className = 'number deaths ' + this.config.infoRowClass
+        if (newDeaths) {
+          newDeathsCell.innerHTML = '+' + newDeaths
+        }
         recoveredCell.className = 'number recovered ' + this.config.infoRowClass
         recoveredCell.innerHTML = totalRecovered
         activeCell.className = 'number active ' + this.config.infoRowClass
@@ -163,7 +206,13 @@ Module.register("MMM-COVID19", {
 
         countryRow.appendChild(countryNameCell)
         countryRow.appendChild(confirmedCell)
+        if (this.config.delta) {
+          countryRow.appendChild(newCasesCell)
+        }
         countryRow.appendChild(deathsCell)
+        if (this.config.delta) {
+          countryRow.appendChild(newDeathsCell)
+        }
         countryRow.appendChild(recoveredCell)
         countryRow.appendChild(activeCell)
         
