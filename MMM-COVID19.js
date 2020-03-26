@@ -28,6 +28,14 @@ Module.register("MMM-COVID19", {
     return ["MMM-COVID19.css"]
   },
 
+  getTranslations: function() {
+    return {
+      en: "translations/en.json",
+      de: "translations/de.json",
+      es: "translations/es.json"
+	  }
+  },
+
   start: function() {
     this.getInfo()
     this.scheduleUpdate()
@@ -89,17 +97,17 @@ Module.register("MMM-COVID19", {
 
     headerCountryNameCell.innerHTML = ''
     headerconfirmedCell.className = 'number confirmed ' + this.config.headerRowClass
-    headerconfirmedCell.innerHTML = 'Confirmed'
+    headerconfirmedCell.innerHTML = this.translate('Confirmed')
     headerNewConfirmedCell.className = 'number confirmed ' + this.config.headerRowClass
-    headerNewConfirmedCell.innerHTML = 'New Cases'
+    headerNewConfirmedCell.innerHTML = this.translate('New Cases')
     headerdeathsCell.className = 'number deaths ' + this.config.headerRowClass
-    headerdeathsCell.innerHTML = 'Deaths'
+    headerdeathsCell.innerHTML = this.translate('Deaths')
     headerNewDeathsCell.className = 'number deaths ' + this.config.headerRowClass
-    headerNewDeathsCell.innerHTML = 'New Deaths'
+    headerNewDeathsCell.innerHTML = this.translate('New Deaths')
     headerrecoveredCell.className = 'number recovered ' + this.config.headerRowClass
-    headerrecoveredCell.innerHTML = 'Recovered'
+    headerrecoveredCell.innerHTML = this.translate('Recovered')
     headeractiveCell.className = 'number active ' + this.config.headerRowClass
-    headeractiveCell.innerHTML = 'Active'
+    headeractiveCell.innerHTML = this.translate('Active')
 
     headerRow.appendChild(headerCountryNameCell)
     headerRow.appendChild(headerconfirmedCell)
@@ -131,7 +139,7 @@ Module.register("MMM-COVID19", {
           totalRecovered = globalStats["total_recovered"],
           activeCases = '';
 
-      worldNameCell.innerHTML = 'Worldwide'
+      worldNameCell.innerHTML = this.translate('Worldwide')
       worldNameCell.className = this.config.infoRowClass
       worldRow.className = 'world ' + this.config.infoRowClass
       confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
@@ -223,7 +231,7 @@ Module.register("MMM-COVID19", {
       let statsDateRow = document.createElement("tr"),
           statsDateCell = document.createElement("td");
 
-      statsDateCell.innerHTML = 'statistic taken at ' + this.countriesStats['statistic_taken_at'] + ' (UTC)'
+      statsDateCell.innerHTML = this.translate('statistic taken at ') + this.countriesStats['statistic_taken_at'] + ' (UTC)'
       statsDateCell.colSpan = "5";
       statsDateCell.className = 'last-update'
 
