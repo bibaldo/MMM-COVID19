@@ -232,7 +232,11 @@ Module.register("MMM-COVID19", {
           statsDateCell = document.createElement("td");
 
       statsDateCell.innerHTML = this.translate('statistic taken at ') + this.countriesStats['statistic_taken_at'] + ' (UTC)'
-      statsDateCell.colSpan = "5";
+      if (this.config.delta) {
+      		statsDateCell.colSpan = "7"
+    	} else {
+		statsDateCell.colSpan = "5"
+	}
       statsDateCell.className = 'last-update'
 
       statsDateRow.appendChild(statsDateCell)
