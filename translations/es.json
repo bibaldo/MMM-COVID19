@@ -6,5 +6,8 @@
   "Recovered": "Recuperados",
   "Active": "Activos",
   "Worldwide" : "Global",
-  "statistic taken at ": "estadísticas tomadas el "
+  "statistic taken at ": "estadísticas tomadas el ",
+  "Serious" : "Serious Cases",
+  "Cases Per M" : "Cases Per M",
+  "N/A" : "N/A"
 }
