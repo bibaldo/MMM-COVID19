@@ -223,13 +223,13 @@ Module.register("MMM-COVID19", {
         casesPerMCell.innerHTML = casesPerM
         newCasesCell.className = 'number confirmed ' + this.config.infoRowClass
         if (newCases) {
-          newCasesCell.innerHTML = '+' + newCases
+          newCasesCell.innerHTML = newCases
         }
         deathsCell.className = 'number deaths ' + this.config.infoRowClass
         deathsCell.innerHTML = deaths
         newDeathsCell.className = 'number deaths ' + this.config.infoRowClass
         if (newDeaths) {
-          newDeathsCell.innerHTML = '+' + newDeaths
+          newDeathsCell.innerHTML = newDeaths
         }
         seriousCell.className = 'number deaths ' + this.config.infoRowClass
         seriousCell.innerHTML = serious
