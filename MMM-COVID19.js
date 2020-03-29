@@ -89,7 +89,7 @@ Module.register("MMM-COVID19", {
     // header row
     var headerRow = document.createElement("tr"),
         headerConfirmedCell = document.createElement("td"),
-	headerCasesPerMCell = document.createElement("td"),
+        headerCasesPerMCell = document.createElement("td"),
         headerNewConfirmedCell = document.createElement("td"),
         headerCountryNameCell = document.createElement("td"),
         headerRecoveredCell = document.createElement("td"),
@@ -143,7 +143,7 @@ Module.register("MMM-COVID19", {
           newCasesCell = document.createElement("td"),
           deathsCell = document.createElement("td"),
           newDeathsCell = document.createElement("td"),
-	  seriousCell = document.createElement("td"),
+          seriousCell = document.createElement("td"),
           recoveredCell = document.createElement("td"),
           activeCell = document.createElement("td"),
           casesPerMCell = document.createElement("td"),
@@ -153,8 +153,8 @@ Module.register("MMM-COVID19", {
           newDeaths = globalStats["new_deaths"],
           totalRecovered = globalStats["total_recovered"],
           activeCases = this.translate('N/A'),
-	  serious = this.translate('N/A'),
-	  casesPerM = this.translate('N/A');
+          serious = this.translate('N/A'),
+          casesPerM = this.translate('N/A');
 
       worldNameCell.innerHTML = this.translate('Worldwide')
       worldNameCell.className = this.config.infoRowClass
@@ -217,12 +217,12 @@ Module.register("MMM-COVID19", {
             countryName = value["country_name"],
             cases = value["cases"],
             deaths = value["deaths"],
-	    serious = value["serious_critical"],
+            serious = value["serious_critical"],
             newCases = value["new_cases"],
             newDeaths = value["new_deaths"],
             totalRecovered = value["total_recovered"],
             activeCases = value["active_cases"],
-	    casesPerM = value["total_cases_per_1m_population"];
+            casesPerM = value["total_cases_per_1m_population"];
 
         countryNameCell.innerHTML = countryName
         countryNameCell.className = this.config.infoRowClass
