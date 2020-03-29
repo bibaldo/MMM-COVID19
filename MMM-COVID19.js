@@ -152,11 +152,11 @@ Module.register("MMM-COVID19", {
           deaths = globalStats["total_deaths"],
           newDeaths = globalStats["new_deaths"],
           totalRecovered = globalStats["total_recovered"],
-          serious = this.translate('N/A'),
-          casesPerM = this.translate('N/A');
           activeCases = (cases && totalRecovered)?
               this.numberWithCommas(parseInt(cases.replace(",","")) - parseInt(totalRecovered.replace(",","")))
               :"";
+          serious = this.translate('N/A'),
+          casesPerM = this.translate('N/A');
 
       worldNameCell.innerHTML = this.translate('Worldwide')
       worldNameCell.className = this.config.infoRowClass
