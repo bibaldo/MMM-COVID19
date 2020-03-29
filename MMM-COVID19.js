@@ -76,10 +76,6 @@ Module.register("MMM-COVID19", {
     return this.config.header
   },
 
-  numberWithCommas: function(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  },
-
   getDom: function() {
     var countriesList = this.config.countries
     var countriesStats = this.countriesStats["countries_stat"]
@@ -141,7 +137,9 @@ Module.register("MMM-COVID19", {
           deaths = globalStats["total_deaths"],
           newDeaths = globalStats["new_deaths"],
           totalRecovered = globalStats["total_recovered"],
-          activeCases = (cases && totalRecovered)?this.numberWithCommas(parseInt(cases.replace(",","")) - parseInt(totalRecovered.replace(",",""))):"";
+          activeCases = (cases && totalRecovered)?
+              this.numberWithCommas(parseInt(cases.replace(",","")) - parseInt(totalRecovered.replace(",","")))
+              :"";
 
       worldNameCell.innerHTML = this.translate('Worldwide')
       worldNameCell.className = this.config.infoRowClass
@@ -269,5 +267,8 @@ Module.register("MMM-COVID19", {
       );
     }
   },  
-
+  // insert separating commas into a number at thousands, millions, etc
+  numberWithCommas: function(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  },
 })
