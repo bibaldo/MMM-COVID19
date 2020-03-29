@@ -199,7 +199,7 @@ Module.register("MMM-COVID19", {
             totalRecovered = value["total_recovered"],
             activeCases = value["active_cases"];
 
-        countryNameCell.innerHTML = countryName
+        countryNameCell.innerHTML = this.translate(countryName)
         countryNameCell.className = this.config.infoRowClass
         confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
         confirmedCell.innerHTML = cases
