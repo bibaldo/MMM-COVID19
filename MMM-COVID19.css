@@ -22,6 +22,10 @@
   color: red;
 }
 
+.codid td.serious {
+  color: red;
+}
+
 .covid td.active {
   color: orange;
 }

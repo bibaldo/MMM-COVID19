@@ -101,7 +101,7 @@ Module.register("MMM-COVID19", {
     headerCountryNameCell.innerHTML = ''
     headerConfirmedCell.className = 'number confirmed ' + this.config.headerRowClass
     headerConfirmedCell.innerHTML = this.translate('Confirmed')
-    headerCasesPerMCell.className = 'number per M ' + this.config.headerRowClass
+    headerCasesPerMCell.className = 'number ' + this.config.headerRowClass
     headerCasesPerMCell.innerHTML = this.translate('Cases per M')
     headerNewConfirmedCell.className = 'number confirmed ' + this.config.headerRowClass
     headerNewConfirmedCell.innerHTML = this.translate('New Cases')
@@ -109,7 +109,7 @@ Module.register("MMM-COVID19", {
     headerDeathsCell.innerHTML = this.translate('Deaths')
     headerNewDeathsCell.className = 'number deaths ' + this.config.headerRowClass
     headerNewDeathsCell.innerHTML = this.translate('New Deaths')
-    headerSeriousCell.className = 'number deaths ' + this.config.headerRowClass
+    headerSeriousCell.className = 'number serious ' + this.config.headerRowClass
     headerSeriousCell.innerHTML = this.translate('Serious')
     headerRecoveredCell.className = 'number recovered ' + this.config.headerRowClass
     headerRecoveredCell.innerHTML = this.translate('Recovered')
@@ -161,7 +161,7 @@ Module.register("MMM-COVID19", {
       worldRow.className = 'world ' + this.config.infoRowClass
       confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
       confirmedCell.innerHTML = cases
-      casesPerMCell.className = 'number cases per m ' + this.config.infoRowClass
+      casesPerMCell.className = 'number ' + this.config.infoRowClass
       casesPerMCell.innerHTML = casesPerM
       newCasesCell.className = 'number confirmed ' + this.config.infoRowClass
       if (newCases) {
@@ -173,7 +173,7 @@ Module.register("MMM-COVID19", {
       if (newDeaths) {
         newDeathsCell.innerHTML = '+' + newDeaths
       }
-      seriousCell.className = 'number deaths ' + this.config.infoRowClass
+      seriousCell.className = 'number serious ' + this.config.infoRowClass
       seriousCell.innerHTML = serious
       recoveredCell.className = 'number recovered ' + this.config.infoRowClass
       recoveredCell.innerHTML = totalRecovered
@@ -228,7 +228,7 @@ Module.register("MMM-COVID19", {
         countryNameCell.className = this.config.infoRowClass
         confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
         confirmedCell.innerHTML = cases
-        casesPerMCell.className = 'number cases per M ' + this.config.infoRowClass
+        casesPerMCell.className = 'number ' + this.config.infoRowClass
         casesPerMCell.innerHTML = casesPerM
         newCasesCell.className = 'number confirmed ' + this.config.infoRowClass
         if (newCases) {
@@ -240,7 +240,7 @@ Module.register("MMM-COVID19", {
         if (newDeaths) {
           newDeathsCell.innerHTML = '+' + newDeaths
         }
-        seriousCell.className = 'number deaths ' + this.config.infoRowClass
+        seriousCell.className = 'number serious ' + this.config.infoRowClass
         seriousCell.innerHTML = serious
         recoveredCell.className = 'number recovered ' + this.config.infoRowClass
         recoveredCell.innerHTML = totalRecovered
