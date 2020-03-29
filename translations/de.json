@@ -1,9 +1,9 @@
 {
   "Confirmed": "Bestätigt",
   "New Cases": "Neue Fälle",
-  "Deaths": "Tote",
-  "New Deaths": "Neue Tote",
-  "Recovered": "Erholt",
+  "Deaths": "Todesfälle",
+  "New Deaths": "Neue Todesf.",
+  "Recovered": "Genesen",
   "Active": "Aktiv",
   "Worldwide" : "Weltweit",
   "statistic taken at ": "Letzte Statistik: ",
