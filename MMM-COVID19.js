@@ -11,12 +11,13 @@ Module.register("MMM-COVID19", {
   countriesStats: {},
   globalStats: { "total_cases": "", "total_deaths": "", "total_recovered": "" }, // beautify things at start
   defaults: {
-    header: 'COVID-19',    
+    header: 'COVID-19',
     countries: [ "Argentina", "Italy", "Spain", "Germany" ], // default list
     orderCountriesByName: false,
     lastUpdateInfo: false,
     worldStats: false,
     delta: false,
+    showExtraInfo: false,
     rapidapiKey : "", // X-RapidAPI-Key provided at https://rapidapi.com/astsiatsko/api/coronavirus-monitor
     headerRowClass: "small", // small, medium or big
     infoRowClass: "big", // small, medium or big
@@ -117,7 +118,9 @@ Module.register("MMM-COVID19", {
 
     headerRow.appendChild(headerCountryNameCell)
     headerRow.appendChild(headerConfirmedCell)
-    headerRow.appendChild(headerCasesPerMCell)
+    if (this.config.showExtraInfo) {
+      headerRow.appendChild(headerCasesPerMCell)
+    }
     if (this.config.delta) {
       headerRow.appendChild(headerNewConfirmedCell)
     }
@@ -125,7 +128,9 @@ Module.register("MMM-COVID19", {
     if (this.config.delta) {
       headerRow.appendChild(headerNewDeathsCell)
     }
-    headerRow.appendChild(headerSeriousCell)
+    if (this.config.showExtraInfo) {
+      headerRow.appendChild(headerSeriousCell)
+    }
     headerRow.appendChild(headerRecoveredCell)
     headerRow.appendChild(headerActiveCell)
 
@@ -177,7 +182,9 @@ Module.register("MMM-COVID19", {
 
       worldRow.appendChild(worldNameCell)
       worldRow.appendChild(confirmedCell)
-      worldRow.appendChild(casesPerMCell)
+      if (this.config.showExtraInfo) {
+        worldRow.appendChild(casesPerMCell)
+      }
       if (this.config.delta) {
         worldRow.appendChild(newCasesCell)
       }
@@ -185,10 +192,12 @@ Module.register("MMM-COVID19", {
       if (this.config.delta) {
         worldRow.appendChild(newDeathsCell)
       }
-      worldRow.appendChild(seriousCell)
+      if (this.config.showExtraInfo) {
+        worldRow.appendChild(seriousCell)
+      }
       worldRow.appendChild(recoveredCell)
       worldRow.appendChild(activeCell)
-      
+
       wrapper.appendChild(worldRow)
     }
     // countries row, one per country listed at config => countries
@@ -240,7 +249,9 @@ Module.register("MMM-COVID19", {
 
         countryRow.appendChild(countryNameCell)
         countryRow.appendChild(confirmedCell)
-        countryRow.appendChild(casesPerMCell)
+        if (this.config.showExtraInfo) {
+          countryRow.appendChild(casesPerMCell)
+        }
         if (this.config.delta) {
           countryRow.appendChild(newCasesCell)
         }
@@ -248,10 +259,12 @@ Module.register("MMM-COVID19", {
         if (this.config.delta) {
           countryRow.appendChild(newDeathsCell)
         }
-        countryRow.appendChild(seriousCell)
+        if (this.config.showExtraInfo) {
+          countryRow.appendChild(seriousCell)
+        }
         countryRow.appendChild(recoveredCell)
         countryRow.appendChild(activeCell)
-        
+
         wrapper.appendChild(countryRow)
       }
     }
