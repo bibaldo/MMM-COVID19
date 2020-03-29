@@ -34,7 +34,8 @@ The following properties can be configured:
 | `header`                     | The header text <br><br> **Default value:** `'COVID-19'`
 | `worldStats`                 | Worldwide stats <br><br> **OPTIONAL** <br> **Possible values:** `false` or `true` <br> **Default value:** `false`
 | `countries`                  | The countries that we want to get live COVID-19 stats <br><br> **Possible values:** `[  "Argentina, "USA" ]` <br> **Default value:** `[ "Argentina", "Italy", "Spain", "Germany" ]`
-| `orderCountriesByName`       |  Order results by country name (asc) <br><br> **OPTIONAL** <br> **Possible values:** `false` or `true` <br> **Default value:** `false`
+| `orderCountriesByName`       |  Order results by country name (true) or total number of confirmed cases (false)<br><br> **OPTIONAL** <br> **Possible values:** `false` or `true` <br> **Default value:** `false`
+| `orderAscending`             | Sort order for `orderCountriesByName`<br><br>**OPTIONAL** <br> **Possible values:** `false` (descending) or `true` (ascending) <br> **Default value:** `false`
 | `lastUpdateInfo`             | Last update info in UTC Time <br><br> **OPTIONAL** <br> **Possible values:** `false` or `true` <br> **Default value:** `false`
 | `delta`                      | Show 2 more columns (New Cases and New Deaths)<br><br> **OPTIONAL** <br> **Possible values:** `false` or `true` <br> **Default value:** `false`
 | `rapidapiKey`                | rapidApi.com api key <br><br> **MANDATORY** <br> **Check Notes**
