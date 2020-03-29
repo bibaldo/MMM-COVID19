@@ -14,7 +14,7 @@ Module.register("MMM-COVID19", {
     header: 'COVID-19',    
     countries: [ "Argentina", "Italy", "Spain", "Germany" ], // default list
     orderCountriesByName: false,
-	orderAscending: false,
+    orderAscending: false,
     lastUpdateInfo: false,
     worldStats: false,
     delta: false,
