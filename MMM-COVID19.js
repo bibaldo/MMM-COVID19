@@ -13,8 +13,8 @@ Module.register("MMM-COVID19", {
   defaults: {
     header: 'COVID-19',    
     countries: [ "Argentina", "Italy", "Spain", "Germany" ], // default list
-    orderCountriesByName: false,
-    orderAscending: false,
+    orderCountriesByName: false, // false will sort by total number of confirmed cases 
+    orderAscending: false, // sort order, true = ascending, false = descending
     lastUpdateInfo: false,
     worldStats: false,
     delta: false,
@@ -249,7 +249,8 @@ Module.register("MMM-COVID19", {
 
 		return wrapper
   },
-  // sort according to some key and the order could be 'asc' or 'desc'
+  // sort according to the key (currently country_name or cases), 
+  // sort order either ascending or descending as per variable orderAscending
   compareValues: function(key, order ) {
     return function innerSort(a, b) {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
