@@ -152,9 +152,11 @@ Module.register("MMM-COVID19", {
           deaths = globalStats["total_deaths"],
           newDeaths = globalStats["new_deaths"],
           totalRecovered = globalStats["total_recovered"],
-          activeCases = this.translate('N/A'),
           serious = this.translate('N/A'),
           casesPerM = this.translate('N/A');
+          activeCases = (cases && totalRecovered)?
+              this.numberWithCommas(parseInt(cases.replace(",","")) - parseInt(totalRecovered.replace(",","")))
+              :"";
 
       worldNameCell.innerHTML = this.translate('Worldwide')
       worldNameCell.className = this.config.infoRowClass
@@ -306,5 +308,8 @@ Module.register("MMM-COVID19", {
       );
     }
   },  
-
+  // insert separating commas into a number at thousands, millions, etc
+  numberWithCommas: function(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  },
 })
