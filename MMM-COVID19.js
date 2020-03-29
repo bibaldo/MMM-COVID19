@@ -13,7 +13,8 @@ Module.register("MMM-COVID19", {
   defaults: {
     header: 'COVID-19',    
     countries: [ "Argentina", "Italy", "Spain", "Germany" ], // default list
-    orderCountriesByName: false,
+    orderCountriesByName: false, // false will sort by total number of confirmed cases 
+    orderAscending: false, // sort order, true = ascending, false = descending
     lastUpdateInfo: false,
     worldStats: false,
     delta: false,
@@ -80,8 +81,11 @@ Module.register("MMM-COVID19", {
     var countriesList = this.config.countries
     var countriesStats = this.countriesStats["countries_stat"]
     var globalStats = this.globalStats
-    if (this.config.orderCountriesByName && countriesStats) countriesStats.sort(this.compareValues('country_name'))
-    
+    if (this.config.orderCountriesByName && countriesStats) {
+		countriesStats.sort(this.compareValues('country_name', this.config.orderAscending))
+    } else if (countriesStats) {
+		countriesStats.sort(this.compareValues('cases', this.config.orderAscending))
+	}
     var wrapper = document.createElement("table")
     wrapper.className = this.config.tableClass || 'covid'
 
@@ -232,7 +236,11 @@ Module.register("MMM-COVID19", {
           statsDateCell = document.createElement("td");
 
       statsDateCell.innerHTML = this.translate('statistic taken at ') + this.countriesStats['statistic_taken_at'] + ' (UTC)'
-      statsDateCell.colSpan = "5";
+      if (this.config.delta) {
+      		statsDateCell.colSpan = "7"
+    	} else {
+		statsDateCell.colSpan = "5"
+	}
       statsDateCell.className = 'last-update'
 
       statsDateRow.appendChild(statsDateCell)
@@ -241,18 +249,22 @@ Module.register("MMM-COVID19", {
 
 		return wrapper
   },
-  // sort according to some key and the order could be 'asc' or 'desc'
-  compareValues: function(key, order = 'asc') {
+  // sort according to the key (currently country_name or cases), 
+  // sort order either ascending or descending as per variable orderAscending
+  compareValues: function(key, order ) {
     return function innerSort(a, b) {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
         // property doesn't exist on either object
         return 0
       }
   
-      const varA = (typeof a[key] === 'string')
-        ? a[key].toUpperCase() : a[key]
-      const varB = (typeof b[key] === 'string')
-        ? b[key].toUpperCase() : b[key]
+	  let varAlpha = Number(a[key].replace(/,/g,''))
+	  let varBeta = Number(b[key].replace(/,/g,''))
+	  
+	  const varA = (Number.isNaN(varAlpha))
+        ? a[key].toUpperCase() : varAlpha
+      const varB = (Number.isNaN(varBeta))
+        ? b[key].toUpperCase() : varBeta
   
       let comparison = 0
       if (varA > varB) {
@@ -261,7 +273,7 @@ Module.register("MMM-COVID19", {
         comparison = -1
       }
       return (
-        (order === 'desc') ? (comparison * -1) : comparison
+        (!order) ? (comparison * -1) : comparison
       );
     }
   },  
