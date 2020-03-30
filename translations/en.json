@@ -3,8 +3,11 @@
     "New Cases": "New Cases",
     "Deaths": "Deaths",
     "New Deaths": "New Deaths",
+    "Serious" : "Serious Cases",
     "Recovered": "Recovered",
     "Active": "Active",
+    "Cases Per M" : "Cases Per M",
     "Worldwide" : "Worldwide",
-    "statistic taken at ": "statistic taken at "
+    "statistic taken at ": "statistic taken at ",
+    "N/A" : "N/A"
 }

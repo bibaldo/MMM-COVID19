@@ -22,6 +22,10 @@
   color: red;
 }
 
+.covid td.serious {
+  color: orangered;
+}
+
 .covid td.active {
   color: orange;
 }
