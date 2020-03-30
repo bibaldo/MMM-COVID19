@@ -20,11 +20,15 @@ Clone this repository:
 ````
 git clone https://github.com/bibaldo/MMM-COVID19.git
 ````
+Install Package
+````
+cd MMM-COVID19
+npm install
 
 Add the module to the modules array in the `config/config.js` file:
 ````javascript
   {
-    module: 'MMM-COVID19'
+    module: "MMM-COVID19"
   },
 ````
 
@@ -52,7 +56,7 @@ The following properties can be configured:
 
 ````javascript
   {
-    module: 'MMM-COVID19',
+    module: "MMM-COVID19",
     position: "top_left",
     config: {
       updateInterval: 300000,
