@@ -53,9 +53,12 @@ The following properties can be configured:
 ````javascript
   {
     module: 'MMM-COVID19',
+    position: "top_left",
     config: {
       updateInterval: 300000,
       worldStats: true,
+      delta: true,
+      lastUpdateInfo: true,
       countries: [ "Argentina", "China", "Italy", "Spain" ],
       headerRowClass: "small",
       rapidapiKey : "01d6665ba777fdb4117cdmshc742d5373fae8f1cp148639jsn1" // this is an example, do not try to use it for real
