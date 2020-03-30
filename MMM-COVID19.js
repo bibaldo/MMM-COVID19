@@ -279,11 +279,11 @@ Module.register("MMM-COVID19", {
           statsDateCell = document.createElement("td");
 
       statsDateCell.innerHTML = this.translate('statistic taken at ') + this.countriesStats['statistic_taken_at'] + ' (UTC)'
-      statsDateCell.colSpan = 5
-      if (this.config.delta) {
-	      statsDateCell.colSpan = (statsDateCell.colspan + 2)
-      } else if (this.config.showExtraInfo) {
-	      statsDateCell.colSpan = (statsDateCell.colspan + 2)
+      statsDateCell.colSpan = "5"
+      if (this.config.delta || this.config.showExtraInfo) {
+	      statsDateCell.colSpan = "7"
+      } else if (this.config.delta && this.config.showExtraInfo) {
+	      statsDateCell.colSpan = "9"
       }
       statsDateCell.className = 'last-update'
 
