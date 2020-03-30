@@ -230,7 +230,7 @@ Module.register("MMM-COVID19", {
             activeCases = value["active_cases"],
             casesPerM = value["total_cases_per_1m_population"];
 
-        countryNameCell.innerHTML = countryName
+        countryNameCell.innerHTML = this.translate(countryName)
         countryNameCell.className = this.config.infoRowClass
         confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
         confirmedCell.innerHTML = cases
