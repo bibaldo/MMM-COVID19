@@ -37,3 +37,7 @@
   text-align: right;
   font-size: 11px;
 }
+
+.covid tr.highlight {
+  background-color: #404040;
+}

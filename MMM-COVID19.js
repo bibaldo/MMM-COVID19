@@ -19,6 +19,7 @@ Module.register("MMM-COVID19", {
     worldStats: false,
     delta: false,
     showExtraInfo: false,
+	highlightCountry: "", // when containing a valid country ("countries:...") the row's background colour will be changed to enhance visibility 
     rapidapiKey : "", // X-RapidAPI-Key provided at https://rapidapi.com/astsiatsko/api/coronavirus-monitor
     headerRowClass: "small", // small, medium or big
     infoRowClass: "big", // small, medium or big
@@ -232,6 +233,9 @@ Module.register("MMM-COVID19", {
 
         countryNameCell.innerHTML = this.translate(countryName)
         countryNameCell.className = this.config.infoRowClass
+		if (countryName === this.config.highlightCountry) {
+			countryRow.className = 'highlight ' + this.config.infoRowClass
+		}
         confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
         confirmedCell.innerHTML = cases
         casesPerMCell.className = 'number ' + this.config.infoRowClass
