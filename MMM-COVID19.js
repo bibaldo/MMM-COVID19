@@ -233,9 +233,9 @@ Module.register("MMM-COVID19", {
 
         countryNameCell.innerHTML = this.translate(countryName)
         countryNameCell.className = this.config.infoRowClass
-	      if (countryName === this.config.highlightCountry) {
-		countryRow.className = 'highlight ' + this.config.infoRowClass
-	      }
+	if (countryName === this.config.highlightCountry) {
+	  countryRow.className = 'highlight ' + this.config.infoRowClass
+	}
         confirmedCell.className = 'number confirmed ' + this.config.infoRowClass
         confirmedCell.innerHTML = cases
         casesPerMCell.className = 'number ' + this.config.infoRowClass
