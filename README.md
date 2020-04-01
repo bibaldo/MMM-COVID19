@@ -43,6 +43,7 @@ The following properties can be configured:
 | `lastUpdateInfo`             | Last update info in UTC Time <br><br> **OPTIONAL** <br> **Possible values:** `false` or `true` <br> **Default value:** `false`
 | `delta`                      | Show 2 more columns (New Cases and New Deaths)<br><br> **OPTIONAL** <br> **Possible values:** `false` or `true` <br> **Default value:** `false`
 | `showExtraInfo`              | Show Cases per Million and Serious Cases<br><br> **OPTIONAL** <br> **Possible values:** `false` or `true` <br> **Default value:** `false`
+| `highlightCountry`           | Enhances background for one country to improve visibility<br><br> **OPTIONAL** <br> **Possible values:** `"country name"` (i.e. "France") <br> **Default value:** none 
 | `rapidapiKey`                | rapidApi.com api key <br><br> **MANDATORY** <br> **Check Notes**
 | `headerRowClass`             | The font size of the row headers <br><br> **Possible values:** `'small'`, `'medium'`, `'big'` <br> **Default value:** `'small'`
 | `infoRowClass`               | The font size of data <br><br> **Possible values:** `'small'`, `'medium'`, `'big'` <br> **Default value:** `'big'`
