@@ -160,7 +160,7 @@ Module.register("MMM-COVID19", {
           serious = this.translate('N/A'),
           casesPerM = this.translate('N/A');
           activeCases = (cases && totalRecovered)?
-              this.numberWithCommas(parseInt(cases.replace(",","")) - parseInt(totalRecovered.replace(",","")))
+              this.numberWithCommas(parseInt(cases.replace(/,/g,"")) - parseInt(totalRecovered.replace(/,/g,"")) - parseInt(deaths.replace(/,/g,"")))
               :"";
 
       worldNameCell.innerHTML = this.translate('Worldwide')
