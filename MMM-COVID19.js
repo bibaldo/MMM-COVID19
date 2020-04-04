@@ -80,6 +80,10 @@ Module.register("MMM-COVID19", {
   },
 
   getDom: function() {
+    var wrapper = document.createElement("table")
+    if (Object.entries(this.countriesStats).length === 0) return wrapper
+    if (Object.entries(this.globalStats).length === 0) return wrapper
+
     var countriesList = this.config.countries
     var countriesStats = this.countriesStats["countries_stat"]
     var globalStats = this.globalStats
@@ -88,7 +92,7 @@ Module.register("MMM-COVID19", {
     } else if (countriesStats) {
 		countriesStats.sort(this.compareValues('cases', this.config.orderAscending))
 	}
-    var wrapper = document.createElement("table")
+    
     wrapper.className = this.config.tableClass || 'covid'
 
     // header row
@@ -281,8 +285,10 @@ Module.register("MMM-COVID19", {
     if (this.config.lastUpdateInfo) {
       let statsDateRow = document.createElement("tr"),
           statsDateCell = document.createElement("td");
+      // convert API date/time UTC to local timezone
+      let dateToLocalTimezone = new Date(this.countriesStats['statistic_taken_at'] + ' UTC')
 
-      statsDateCell.innerHTML = this.translate('statistic taken at ') + this.countriesStats['statistic_taken_at'] + ' (UTC)'
+      statsDateCell.innerHTML = this.translate('statistic taken at ') + dateToLocalTimezone
       if (this.config.delta && this.config.showExtraInfo) {
 	      statsDateCell.colSpan = "9"
       } else if (this.config.delta || this.config.showExtraInfo) {
