@@ -80,6 +80,10 @@ Module.register("MMM-COVID19", {
   },
 
   getDom: function() {
+    var wrapper = document.createElement("table")
+    if (Object.entries(this.countriesStats).length === 0) return wrapper
+    if (Object.entries(this.globalStats).length === 0) return wrapper
+
     var countriesList = this.config.countries
     var countriesStats = this.countriesStats["countries_stat"]
     var globalStats = this.globalStats
@@ -88,7 +92,7 @@ Module.register("MMM-COVID19", {
     } else if (countriesStats) {
 		countriesStats.sort(this.compareValues('cases', this.config.orderAscending))
 	}
-    var wrapper = document.createElement("table")
+    
     wrapper.className = this.config.tableClass || 'covid'
 
     // header row
