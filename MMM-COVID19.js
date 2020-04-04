@@ -281,8 +281,10 @@ Module.register("MMM-COVID19", {
     if (this.config.lastUpdateInfo) {
       let statsDateRow = document.createElement("tr"),
           statsDateCell = document.createElement("td");
+      // convert API date/time UTC to local timezone
+      let dateToLocalTimezone = new Date(this.countriesStats['statistic_taken_at'] + ' UTC')
 
-      statsDateCell.innerHTML = this.translate('statistic taken at ') + this.countriesStats['statistic_taken_at'] + ' (UTC)'
+      statsDateCell.innerHTML = this.translate('statistic taken at ') + dateToLocalTimezone
       if (this.config.delta && this.config.showExtraInfo) {
 	      statsDateCell.colSpan = "9"
       } else if (this.config.delta || this.config.showExtraInfo) {
