@@ -24,11 +24,16 @@ Module.register("MMM-COVID19", {
     headerRowClass: "small", // small, medium or big
     infoRowClass: "big", // small, medium or big
     updateInterval: 300000, // update interval in milliseconds
-    fadeSpeed: 4000
+    fadeSpeed: 4000, 
+	timeFormat:"D.M. HH.mm"
   },
 
   getStyles: function() {
     return ["MMM-COVID19.css"]
+  },
+  
+  getScripts: function () {
+    return ['moment.js']
   },
 
   getTranslations: function() {
@@ -40,7 +45,7 @@ Module.register("MMM-COVID19", {
   },
 
   start: function() {
-    this.getInfo()
+	this.getInfo()
     this.scheduleUpdate()
   },
 
@@ -288,7 +293,7 @@ Module.register("MMM-COVID19", {
       // convert API date/time UTC to local timezone
       let dateToLocalTimezone = new Date(this.countriesStats['statistic_taken_at'] + ' UTC')
 
-      statsDateCell.innerHTML = this.translate('statistic taken at ') + dateToLocalTimezone
+      statsDateCell.innerHTML = this.translate('statistic taken at ') + moment(dateToLocalTimezone).format(this.config.timeFormat) 
       if (this.config.delta && this.config.showExtraInfo) {
 	      statsDateCell.colSpan = "9"
       } else if (this.config.delta || this.config.showExtraInfo) {
