@@ -48,7 +48,7 @@ The following properties can be configured:
 | `headerRowClass`             | The font size of the row headers <br><br> **Possible values:** `'small'`, `'medium'`, `'big'` <br> **Default value:** `'small'`
 | `infoRowClass`               | The font size of data <br><br> **Possible values:** `'small'`, `'medium'`, `'big'` <br> **Default value:** `'big'`
 | `updateInterval`             | How often does the content needs to be fetched? (Milliseconds) <br><br> **Possible values:** `1000` - `86400000` <br> **Default value:** `300000` (5 minutes)
-
+| `timeFormat`                 | Formatting date and time for lastUpdateInfo <br><br> **OPTIONAL** <br>**Default value:** "D.M. HH.mm" 
 ## Config Example
 
 ````javascript
