@@ -289,7 +289,7 @@ Module.register("MMM-COVID19", {
       // convert API date/time UTC to local timezone
       let dateToLocalTimezone = new Date(this.countriesStats['statistic_taken_at'] + ' UTC')
 
-      statsDateCell.innerHTML = this.translate('statistic taken at ') + dateToLocalTimezone.toLocaleString()
+      statsDateCell.innerHTML = this.translate('statistic taken at ') + dateToLocalTimezone
       if (this.config.delta && this.config.showExtraInfo) {
 	      statsDateCell.colSpan = "9"
       } else if (this.config.delta || this.config.showExtraInfo) {
