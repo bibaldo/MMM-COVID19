@@ -25,17 +25,13 @@ Module.register("MMM-COVID19", {
     infoRowClass: "big", // small, medium or big
     updateInterval: 300000, // update interval in milliseconds
     fadeSpeed: 4000, 
-	timeFormat:"D.M. HH.mm"
+	  timeFormat:"MMMM Do YYYY, h:mm:ss a"
   },
 
   getStyles: function() {
     return ["MMM-COVID19.css"]
   },
   
-  getScripts: function () {
-    return ['moment.js']
-  },
-
   getTranslations: function() {
     return {
       en: "translations/en.json",
@@ -45,7 +41,7 @@ Module.register("MMM-COVID19", {
   },
 
   start: function() {
-	this.getInfo()
+	  this.getInfo()
     this.scheduleUpdate()
   },
 
