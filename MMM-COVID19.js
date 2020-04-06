@@ -35,8 +35,9 @@ Module.register("MMM-COVID19", {
     return {
       en: "translations/en.json",
       de: "translations/de.json",
-      es: "translations/es.json"
-	  }
+      es: "translations/es.json",
+      hu: "translations/hu.json"
+	}
   },
 
   start: function() {
@@ -288,7 +289,7 @@ Module.register("MMM-COVID19", {
       // convert API date/time UTC to local timezone
       let dateToLocalTimezone = new Date(this.countriesStats['statistic_taken_at'] + ' UTC')
 
-      statsDateCell.innerHTML = this.translate('statistic taken at ') + dateToLocalTimezone
+      statsDateCell.innerHTML = this.translate('statistic taken at ') + dateToLocalTimezone.toLocaleString()
       if (this.config.delta && this.config.showExtraInfo) {
 	      statsDateCell.colSpan = "9"
       } else if (this.config.delta || this.config.showExtraInfo) {

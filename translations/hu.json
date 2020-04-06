@@ -1,0 +1,13 @@
+{
+    "Confirmed": "Fertőzött",
+    "New Cases": "Új esetek",
+    "Deaths": "Elhunytak",
+    "New Deaths": "Mai elhunytak",
+    "Serious" : "Súlyos esetek",
+    "Recovered": "Gyógyult",
+    "Active": "Aktív",
+    "Cases Per M" : "Esetek/millió",
+    "Worldwide" : "Világszerte",
+    "statistic taken at ": "Statisztika utoljára frissítve ",
+    "N/A" : "N/A"
+}
