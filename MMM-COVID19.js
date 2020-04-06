@@ -111,7 +111,7 @@ Module.register("MMM-COVID19", {
     headerConfirmedCell.className = 'number confirmed ' + this.config.headerRowClass
     headerConfirmedCell.innerHTML = this.translate('Confirmed')
     headerCasesPerMCell.className = 'number ' + this.config.headerRowClass
-    headerCasesPerMCell.innerHTML = this.translate('Cases per M')
+    headerCasesPerMCell.innerHTML = this.translate('Cases Per M')
     headerNewConfirmedCell.className = 'number confirmed ' + this.config.headerRowClass
     headerNewConfirmedCell.innerHTML = this.translate('New Cases')
     headerDeathsCell.className = 'number deaths ' + this.config.headerRowClass
