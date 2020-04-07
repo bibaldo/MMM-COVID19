@@ -48,7 +48,7 @@ The following properties can be configured:
 | `headerRowClass`             | The font size of the row headers <br><br> **Possible values:** `'small'`, `'medium'`, `'big'` <br> **Default value:** `'small'`
 | `infoRowClass`               | The font size of data <br><br> **Possible values:** `'small'`, `'medium'`, `'big'` <br> **Default value:** `'big'`
 | `updateInterval`             | How often does the content needs to be fetched? (Milliseconds) <br><br> **Possible values:** `1000` - `86400000` <br> **Default value:** `300000` (5 minutes)
-| `timeFormat`                 | Formatting date and time for lastUpdateInfo <br>Check https://momentjs.com/docs/#/displaying/format/ for more info<br><br> **OPTIONAL** <br>**Default value:** "MMMM Do YYYY, h:mm:ss a" 
+| `timeFormat`                 | Formatting date and time for lastUpdateInfo <br><br> **OPTIONAL** <br>**Posible values:** check https://momentjs.com/docs/#/displaying/format/ <br>**Default value:** `"MMMM Do YYYY, h:mm:ss a" // April 7th 2020, 03:08:10 pm`
 
 ## Config Example
 

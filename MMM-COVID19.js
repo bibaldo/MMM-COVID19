@@ -25,7 +25,7 @@ Module.register("MMM-COVID19", {
     infoRowClass: "big", // small, medium or big
     updateInterval: 300000, // update interval in milliseconds
     fadeSpeed: 4000, 
-	  timeFormat:"MMMM Do YYYY, h:mm:ss a"
+    timeFormat: "MMMM Do YYYY, h:mm:ss a" // April 7th 2020, 03:08:10 pm
   },
 
   getStyles: function() {
