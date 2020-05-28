@@ -1,0 +1,13 @@
+{
+    "Confirmed": "Bekräftade",
+    "New Cases": "Nya fall",
+    "Deaths": "Dödsfall",
+    "New Deaths": "Nya Dödsfall",
+    "Serious" : "Allvarliga",
+    "Recovered": "Friskförklarade",
+    "Active": "Aktiva",
+    "Cases Per M" : "Antal fall per miljon",
+    "Worldwide" : "Global",
+    "statistic taken at ": "statistik hämtat: ",
+    "N/A" : "Inte tillgänglig"
+}
