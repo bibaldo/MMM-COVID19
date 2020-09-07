@@ -1,0 +1,13 @@
+{
+    "Confirmed": "확진",
+    "New Cases": "신규",
+    "Deaths": "사망",
+    "New Deaths": "신규",
+    "Serious" : "중증환자",
+    "Recovered": "완치",
+    "Active": "치료",
+    "Cases Per M" : "발생률",
+    "Worldwide" : "세계",
+    "statistic taken at ": "집계 기준 ",
+    "N/A" : "N/A"
+}
