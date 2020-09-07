@@ -39,7 +39,8 @@ Module.register("MMM-COVID19", {
       es: "translations/es.json",
       hu: "translations/hu.json",
       pl: "translations/pl.json",
-      fr: "translations/fr.json"
+      fr: "translations/fr.json",
+      ko: "translations/ko.json"
 	}
   },
 
